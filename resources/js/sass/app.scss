@@ -1,0 +1,105 @@
+// Variables
+@import 'variables';
+
+body{
+  font-family: 'Mulish', sans-serif;
+}
+.error-message {
+  font-size: 12px;
+  color: #ec4561;
+  margin-top: 5px;
+}
+
+.error-border {
+  border-color: #ec4561 !important;
+}
+
+.submit-button {
+  height: 38px !important;
+}
+
+.router-link-exact-active {
+  color: #b4c9de !important;
+  background-color: #383b4e;
+}
+
+a {
+  color: rgb(52, 144, 220)
+}
+
+.modal-title-font {
+  font-size: 16px;
+}
+
+.btn-gradient {
+  background-image: linear-gradient(88deg,rgba(10,17,67,.93),rgba(11,31,196,.471));
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+}
+
+.btn-gradient:hover {
+  background-image: linear-gradient(88deg,rgba(11,31,196,.471),rgba(10,17,67,.93));
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+}
+
+.bg-gradient {
+  background-image: linear-gradient(88deg,rgba(10,17,67,.93),rgba(11,31,196,.471));
+}
+
+.bg-gradient:hover {
+  background-image: linear-gradient(88deg,rgba(11,31,196,.471),rgba(10,17,67,.93));
+}
+
+.bg-gradient-stable {
+  background-image: linear-gradient(88deg, #00a55d, #626ed4f2);
+}
+
+.required-field {
+  color: #fb1212;
+}
+
+.table-form {
+  min-height: 600px;
+}
+
+//nav bar color
+
+.topnav {
+  background: #00a55d !important;
+}
+
+.topnav .navbar-nav .nav-link {
+  color: #ffffff !important;
+}
+
+.topnav .navbar-nav .nav-link:hover {
+  color: antiquewhite !important;
+}
+
+.router-link-exact-active {
+  background-color: #039957;
+}
+
+//table design
+.table .thead-dark th {
+  background-color: #00a55d;
+  vertical-align: middle;
+}
+
+.card-header {
+  background: linear-gradient(269deg, rgb(98, 110, 212), rgb(35 42 104)) !important;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  font-size: 12px;
+}
+
+.scrollable {
+  max-height: 600px;
+}
+
+.search {
+  margin-bottom: 10px;
+}
