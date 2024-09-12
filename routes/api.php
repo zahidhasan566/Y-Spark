@@ -35,8 +35,7 @@ Route::group(['middleware' =>  ['jwt','throttle:10000,1']], function () {
 
     //Warranty
     Route::group(['prefix' => 'warranty'],function () {
-        Route::get('supporting-data', [\App\Http\Controllers\ServiceHistory\ServiceHistoryController::class, 'getServiceHistory']);
-        Route::get('schedule', [\App\Http\Controllers\ServiceHistory\ServiceHistoryController::class, 'getServiceSchedule']);
+        Route::get('supporting-data', [\App\Http\Controllers\Warranty\WarrantyController::class, 'getSupportingData']);
     });
 
 //    // ADMIN USERS
