@@ -30,6 +30,7 @@ Route::group(['middleware' =>  ['jwt','throttle:10000,1']], function () {
     //Service History
     Route::group(['prefix' => 'service-history'],function () {
         Route::get('list', [\App\Http\Controllers\ServiceHistory\ServiceHistoryController::class, 'getServiceHistory']);
+        Route::get('schedule', [\App\Http\Controllers\ServiceHistory\ServiceHistoryController::class, 'getServiceSchedule']);
 
 
     });
