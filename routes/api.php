@@ -31,20 +31,24 @@ Route::group(['middleware' =>  ['jwt','throttle:10000,1']], function () {
     Route::group(['prefix' => 'service-history'],function () {
         Route::get('list', [\App\Http\Controllers\ServiceHistory\ServiceHistoryController::class, 'getServiceHistory']);
         Route::get('schedule', [\App\Http\Controllers\ServiceHistory\ServiceHistoryController::class, 'getServiceSchedule']);
-
-
     });
 
-    // ADMIN USERS
-    Route::group(['prefix' => 'user'],function () {
-        Route::post('list', [\App\Http\Controllers\Admin\Users\AdminUserController::class, 'index']);
-        //User Modal Data
-        Route::get('modal',[\App\Http\Controllers\Admin\Users\AdminUserController::class,'userModalData']);
-        Route::post('add', [\App\Http\Controllers\Admin\Users\AdminUserController::class, 'store']);
-        Route::get('get-user-info/{UserId}',[\App\Http\Controllers\Admin\Users\AdminUserController::class,'getUserInfo']);
-        Route::post('update', [\App\Http\Controllers\Admin\Users\AdminUserController::class, 'update']);
-        Route::post('password-change',[\App\Http\Controllers\Common\HelperController::class,'passwordChange']);
+    //Warranty
+    Route::group(['prefix' => 'warranty'],function () {
+        Route::get('supporting-data', [\App\Http\Controllers\ServiceHistory\ServiceHistoryController::class, 'getServiceHistory']);
+        Route::get('schedule', [\App\Http\Controllers\ServiceHistory\ServiceHistoryController::class, 'getServiceSchedule']);
     });
+
+//    // ADMIN USERS
+//    Route::group(['prefix' => 'user'],function () {
+//        Route::post('list', [\App\Http\Controllers\Admin\Users\AdminUserController::class, 'index']);
+//        //User Modal Data
+//        Route::get('modal',[\App\Http\Controllers\Admin\Users\AdminUserController::class,'userModalData']);
+//        Route::post('add', [\App\Http\Controllers\Admin\Users\AdminUserController::class, 'store']);
+//        Route::get('get-user-info/{UserId}',[\App\Http\Controllers\Admin\Users\AdminUserController::class,'getUserInfo']);
+//        Route::post('update', [\App\Http\Controllers\Admin\Users\AdminUserController::class, 'update']);
+//        Route::post('password-change',[\App\Http\Controllers\Common\HelperController::class,'passwordChange']);
+//    });
 
 
 });

@@ -81,10 +81,11 @@ class AuthController extends Controller
         $otpCode = $request->otpCode;
         $chassisNo = $request->chassisNo;
         $user = YSparkLogin::where('ChassisNo', $chassisNo)->where('LoginCode', $otpCode)->where('LoginCode', $otpCode)->first();
-        $mobileNo = $user->MobileNo;
+
 
         try {
             if ($user) {
+                $mobileNo = $user->MobileNo;
                     $token=$this->generateToken($user);
                 // OTP is valid, issue JWT token
                 if ($mobileNo && $token) {
