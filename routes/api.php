@@ -38,6 +38,13 @@ Route::group(['middleware' =>  ['jwt','throttle:10000,1']], function () {
         Route::get('supporting-data', [\App\Http\Controllers\Warranty\WarrantyController::class, 'getSupportingData']);
     });
 
+    //Online Booking
+    Route::group(['prefix' => 'online-booking'],function () {
+        Route::get('supporting-data', [\App\Http\Controllers\OnlineBooking\OnlineBookingController::class, 'getSupportingData']);
+        Route::post('location-wise-time-slot', [\App\Http\Controllers\OnlineBooking\OnlineBookingController::class, 'getBayinfoByLocation']);
+        Route::post('add', [\App\Http\Controllers\OnlineBooking\OnlineBookingController::class, 'onlineBooking']);
+    });
+
 //    // ADMIN USERS
 //    Route::group(['prefix' => 'user'],function () {
 //        Route::post('list', [\App\Http\Controllers\Admin\Users\AdminUserController::class, 'index']);

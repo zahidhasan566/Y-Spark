@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\DealarInvoiceDetails;
 use App\Models\User;
+use App\Models\ViewRetailCustomer;
 use App\Models\YSparkLogin;
 use App\Models\YSparkSmsLog;
 use App\Traits\CommonTrait;
@@ -80,9 +81,24 @@ class AuthController extends Controller
     {
         $otpCode = $request->otpCode;
         $chassisNo = $request->chassisNo;
-        $user = YSparkLogin::where('ChassisNo', $chassisNo)->where('LoginCode', $otpCode)->where('LoginCode', $otpCode)->first();
-
-
+        $user = YSparkLogin::select(
+            'ViewRetailCustomer.CustomerName',
+            'ViewRetailCustomer.ChassisNo',
+            'ViewRetailCustomer.MobileNo',
+            'ViewRetailCustomer.PreAddress',
+            'ViewRetailCustomer.ProductName as BikeModel',
+            'YSparkLogin.LoginCode',
+            'YSparkLogin.OtpVerification',
+            'YSparkLogin.OtpExpiration')
+            ->join('ViewRetailCustomer',function ($q) use($chassisNo) {
+                $q->on('ViewRetailCustomer.ChassisNo','YSparkLogin.ChassisNo');
+                $q->where('ViewRetailCustomer.ChassisNo',$chassisNo);
+            })
+            ->where('YSparkLogin.ChassisNo', $chassisNo)
+            ->where('ViewRetailCustomer.ChassisNo', $chassisNo)
+            ->where('YSparkLogin.LoginCode', $otpCode)
+            ->where('YSparkLogin.LoginCode', $otpCode)
+            ->first();
         try {
             if ($user) {
                 $mobileNo = $user->MobileNo;
