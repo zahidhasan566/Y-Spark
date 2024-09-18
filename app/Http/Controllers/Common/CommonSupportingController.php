@@ -17,28 +17,10 @@ class CommonSupportingController extends Controller
         $socialLink['autoMobile'] = "https://acimotors-bd.com/products/automobiles/yamaha";
         $socialLink['youtube'] = "https://www.youtube.com/@YAMAHABangladesh";
         $socialLink['callCenter'] = "16533";
-
-        $eventsArr = YSparkEvents::where('Status', 1)->get();
-        $allEvents =[];
-        $finalEvents =[];
-
-        foreach($eventsArr as $event){
-            $finalEvents['EventID']=$event->EventID;
-            $finalEvents['EventName']=$event->EventName;
-            $finalEvents['EventImage']= asset('assets/images/events/'.$event->EventImage);
-            $finalEvents['EventStartFrom']=$event->EventStartFrom;
-            $finalEvents['EventEndTo']=$event->EventEndTo;
-            $finalEvents['EventDetails']=$event->EventDetails;
-            array_push($allEvents,$finalEvents);
-        }
-
-
-
         return response()->json([
             'status' => 'success',
             'partsMrpUrl' => $partsMrpUrl,
             'socialLink' => $socialLink,
-            'allEvents' => $allEvents,
         ]);
     }
 }

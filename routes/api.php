@@ -46,9 +46,11 @@ Route::group(['middleware' =>  ['jwt','throttle:10000,1']], function () {
     });
 
     //Common Supporting Data
-    //Online Booking
     Route::group(['prefix' => 'common-supporting'],function () {
         Route::get('list', [\App\Http\Controllers\Common\CommonSupportingController::class, 'getSupportingData']);;
+    });
+    Route::group(['prefix' => 'events'],function () {
+        Route::get('list', [\App\Http\Controllers\Event\EventController::class, 'getSupportingData']);;
     });
 
 //    // ADMIN USERS
