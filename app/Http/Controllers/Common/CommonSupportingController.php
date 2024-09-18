@@ -12,6 +12,7 @@ class CommonSupportingController extends Controller
         $socialLink=[];
         $socialLink['facebook'] = "https://www.facebook.com/Yamahabd";
         $socialLink['instagram'] = "https://www.instagram.com/yamaha.bangladesh";
+        $socialLink['tiktok'] = "https://www.tiktok.com/@yamaha.bangladesh";
         $socialLink['autoMobile'] = "https://acimotors-bd.com/products/automobiles/yamaha";
         $socialLink['youtube'] = "https://www.youtube.com/@YAMAHABangladesh";
         $socialLink['callCenter'] = "16533";
