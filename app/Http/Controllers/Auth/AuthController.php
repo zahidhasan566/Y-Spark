@@ -184,7 +184,7 @@ class AuthController extends Controller
             'MobileNo' => $user['MobileNo'],
         ];
         try {
-            $privateKey = env('JWT_SECRET');
+            $privateKey = env('JWT_SECRET',"dEYBNLK7v1AW6vFOhkY15T9Z60mayXHGDrCiAj9aA9UnAnSwrWa7T2m0FmiMNPjd");
             $token = JWT::encode($payload, $privateKey);
             return $token;
         } catch (\Exception $ex) {
