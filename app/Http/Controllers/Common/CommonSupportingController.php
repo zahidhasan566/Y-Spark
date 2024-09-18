@@ -25,7 +25,7 @@ class CommonSupportingController extends Controller
         foreach($eventsArr as $event){
             $finalEvents['EventID']=$event->EventID;
             $finalEvents['EventName']=$event->EventName;
-            $finalEvents['EventImage']= public_path('assets/images/events'.$event->EventImage);;
+            $finalEvents['EventImage']= asset('assets/images/events/'.$event->EventImage);
             $finalEvents['EventStartFrom']=$event->EventStartFrom;
             $finalEvents['EventEndTo']=$event->EventEndTo;
             $finalEvents['EventDetails']=$event->EventDetails;
