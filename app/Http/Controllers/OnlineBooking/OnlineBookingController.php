@@ -52,8 +52,32 @@ class OnlineBookingController extends Controller
                 WHERE SL = 1
                 Order By TimeSlotId ASC"));
 
+//        $booked = array();
+//        foreach ($bayList as $bay) {
+//            foreach ($timeSlots as $slot) {
+//                foreach ($alreadyBooked as $booking) {
+//                    if ($booking->TimeSlotId == $slot->TimeSlotId && $booking->BayName == $bay->BayName) {
+//                        $bayList['booked']='Booked';
+//                        //$booked[] = $bayList;
+//                    }
+//                }
+//            }
+//        }
+        //$bayList = array_merge($bayList, $booked);
+
         $serviceType = DB::connection('MotorMC')->select(DB::raw("SELECT ServiceType,ServiceTypeName  FROM [MotorMC].[dbo].[YSparkServiceType] where Active='Y'"));
 
+//        $extra = array();
+//        foreach ($alreadyBooked as $key => $alreadyBookedRow) {
+//            foreach ($bayList as $bayListRow) {
+//                dd($bayListRow);
+//                if ($alreadyBookedRow->TimeSlotId == $bayListRow->TimeSlotId && $alreadyBookedRow->BayName == $bayListRow->BayName) {
+//                    $bayListRow->extra = 'Booked';
+//                    $extra[] = $bayListRow;
+//                }
+//            }
+//        }
+//        $bayList = array_merge($bayList, $extra);
 
         return response()->json([
             'status' => 'success',

@@ -45,6 +45,12 @@ Route::group(['middleware' =>  ['jwt','throttle:10000,1']], function () {
         Route::post('add', [\App\Http\Controllers\OnlineBooking\OnlineBookingController::class, 'onlineBooking']);
     });
 
+    //Common Supporting Data
+    //Online Booking
+    Route::group(['prefix' => 'common-supporting'],function () {
+        Route::get('list', [\App\Http\Controllers\Common\CommonSupportingController::class, 'getSupportingData']);;
+    });
+
 //    // ADMIN USERS
 //    Route::group(['prefix' => 'user'],function () {
 //        Route::post('list', [\App\Http\Controllers\Admin\Users\AdminUserController::class, 'index']);
