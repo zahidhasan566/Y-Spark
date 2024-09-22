@@ -52,7 +52,9 @@ Route::group(['middleware' =>  ['jwt','throttle:10000,1']], function () {
     Route::group(['prefix' => 'events'],function () {
         Route::get('list', [\App\Http\Controllers\Event\EventController::class, 'getSupportingData']);;
     });
-
+    Route::group(['prefix' => 'qrCode'],function () {
+        Route::post('data', [\App\Http\Controllers\QrCode\QrCodeController::class, 'qrCodeData']);;
+    });
 //    // ADMIN USERS
 //    Route::group(['prefix' => 'user'],function () {
 //        Route::post('list', [\App\Http\Controllers\Admin\Users\AdminUserController::class, 'index']);
