@@ -14,7 +14,7 @@ class OnlineBookingController extends Controller
     public function getSupportingData()
     {
         $locations = DB::connection('MotorMC')
-            ->select(DB::raw("SELECT DISTINCT C.CustomerCode, C.CustomerName, D.DistrictCode, D.DistrictName
+            ->select(DB::raw("SELECT DISTINCT C.CustomerCode, C.CustomerName,C.latitude,C.Longitude, D.DistrictCode, D.DistrictName
                     FROM OnlineReservation R
                         INNER JOIN Customer C
                             ON R.CustomerCode = C.CustomerCode
