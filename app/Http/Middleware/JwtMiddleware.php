@@ -11,7 +11,7 @@ class JwtMiddleware
     public function handle(Request $request, Closure $next)
     {
         try {
-            $privateKey = env('JWT_SECRET');
+            $privateKey = env('JWT_SECRET','EFNsn92UCYn1MF857bA3qOAcqNU7XUIxmyoysZuPbLhJwB3DLL3tDVvkYfiXGu07');
             $token = $request->bearerToken();
             if($token == null) {
                 return response()->json([

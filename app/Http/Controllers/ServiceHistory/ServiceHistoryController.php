@@ -19,9 +19,15 @@ class ServiceHistoryController extends Controller
         $mobileNo =$payload['MobileNo'];
 
         $serviceHistory =  DB::select("exec usp_doLoadServiceHistoriesNew '$chassisNo'");
+        $ytdFileCount = array_reduce($serviceHistory, function($carry, $item){
+            return $carry + (int)$item->YTD_File;
+        }, 0);
+
         return response()->json([
             'status' => 'Success',
+            'ytdFileCount' =>$ytdFileCount,
             'serviceHistory' =>$serviceHistory,
+
         ], 200);
 
     }
