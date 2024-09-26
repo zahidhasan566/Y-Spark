@@ -42,7 +42,7 @@ class AuthController extends Controller
             $ySparkLoginUser->OtpExpiration = Carbon::now()->addMinutes(5);;
             $ySparkLoginUser->save();
 
-            $smscontent = 'আপনার লগিনের জন্য ওটিপি কোডটি হলো- ' . $SixDigitRandomNumber;
+            $smscontent = 'ওয়াই স্পার্ক লগিনের জন্য আপনার ওটিপি কোডটি হলো- ' . $SixDigitRandomNumber;
             $respons = $this->sendSmsQ($mobileNo, '8809617615000', 'Y_Spark', 'Y_Spark', '', $customerCode, 'smsq', $smscontent);;
             $responseStatus = json_decode($respons)->data->status;
 
