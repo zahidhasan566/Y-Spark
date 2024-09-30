@@ -77,6 +77,19 @@ return [
             'schema' => 'public',
             'sslmode' => 'prefer',
         ],
+        'sqlsrv' => [
+            'driver' => 'sqlsrv',
+            'host' => '192.168.100.25',
+            'port' => '1433',
+            'database' => 'MotorMC',
+            'username' => 'sa',
+            'password' => 'dataport',
+            'charset' => 'utf8',
+            'prefix' => '',
+            'strict' => false,
+            // 'engine' => null,
+        ],
+
         'MotorMC' => [
             'driver' => 'sqlsrv',
             'host' => '192.168.100.25',
@@ -98,19 +111,6 @@ return [
             'charset' => 'utf8',
             'prefix' => '',
             'strict' => false,
-        ],
-
-        'sqlsrv' => [
-            'driver' => 'sqlsrv',
-            'host' => '192.168.100.25',
-            'port' => '1433',
-            'database' => 'MotorMC',
-            'username' => 'sa',
-            'password' => 'dataport',
-            'charset' => 'utf8',
-            'prefix' => '',
-            'strict' => false,
-            // 'engine' => null,
         ],
 
     ],

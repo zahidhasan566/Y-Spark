@@ -175,22 +175,25 @@ class AuthController extends Controller
     }
     public function generateToken($user)
     {
-        $payload = [
-            'iat' => time(),
-            'iss' => $_SERVER['SERVER_NAME'],
-            'exp' => time() + 12 * 30 * (24 * 60 * 60),// 1 Month
-            'ChassisNo' => $user['ChassisNo'],
-            'Id' => $user['Id'],
-            'MobileNo' => $user['MobileNo'],
-        ];
-        try {
-            $privateKey = env('JWT_SECRET',"dEYBNLK7v1AW6vFOhkY15T9Z60mayXHGDrCiAj9aA9UnAnSwrWa7T2m0FmiMNPjd");
-            $token = JWT::encode($payload, $privateKey);
-            return $token;
-        } catch (\Exception $ex) {
-            $token = false;
-        }
-        return $token;
+//        $payload = [
+//            'iat' => time(),
+//            'iss' => $_SERVER['SERVER_NAME'],
+//            'exp' => time() + 12 * 30 * (24 * 60 * 60),// 1 Month
+//            'ChassisNo' => $user['ChassisNo'],
+//            'Id' => $user['Id'],
+//            'MobileNo' => $user['MobileNo'],
+//        ];
+//        try {
+//            $privateKey = env('JWT_SECRET',"dEYBNLK7v1AW6vFOhkY15T9Z60mayXHGDrCiAj9aA9UnAnSwrWa7T2m0FmiMNPjd");
+//            $token = JWT::encode($payload, $privateKey);
+//            return $token;
+//        } catch (\Exception $ex) {
+//            $token = false;
+//        }
+//        return $token;
+        $user = User::where('ChassisNo', $user['ChassisNo'])->first();
+        Auth::login($user);
+        return JWTAuth::fromUser($user);
 
     }
 

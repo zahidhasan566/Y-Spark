@@ -25,7 +25,7 @@ return [
     |
     */
 
-    'secret' => env('JWT_SECRET'),
+    'secret' => 'dEYBNLK7v1AW6vFOhkY15T9Z60mayXHGDrCiAj9aA9UnAnSwrWa7T2m0FmiMNPjd',
 
     /*
     |--------------------------------------------------------------------------
@@ -101,7 +101,7 @@ return [
     |
     */
 
-    'ttl' => env('JWT_TTL', null),
+    'ttl' => env('JWT_TTL', 60*24*30),
 
     /*
     |--------------------------------------------------------------------------
@@ -120,7 +120,7 @@ return [
     |
     */
 
-    'refresh_ttl' => env('JWT_REFRESH_TTL', 20160),
+    'refresh_ttl' => env('JWT_REFRESH_TTL', null),
 
     /*
     |--------------------------------------------------------------------------
@@ -150,9 +150,9 @@ return [
     'required_claims' => [
         'iss',
         'iat',
-//        'nbf',
-//        'sub',
-//        'jti',
+        'nbf',
+        'sub',
+        'jti',
     ],
 
     /*
@@ -219,7 +219,7 @@ return [
     |
     */
 
-    'blacklist_enabled' => env('JWT_BLACKLIST_ENABLED', true),
+    'blacklist_enabled' => env('JWT_BLACKLIST_ENABLED', false),
 
     /*
     | -------------------------------------------------------------------------

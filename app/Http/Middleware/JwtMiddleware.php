@@ -11,16 +11,15 @@ class JwtMiddleware
     public function handle(Request $request, Closure $next)
     {
         try {
-            $privateKey = env('JWT_SECRET','EFNsn92UCYn1MF857bA3qOAcqNU7XUIxmyoysZuPbLhJwB3DLL3tDVvkYfiXGu07');
-            $token = $request->bearerToken();
-            if($token == null) {
-                return response()->json([
-                    'status' => 'error',
-                    'message' => 'Authorization token required'
-                ],401);
-            }
+            $user = JWTAuth::parseToken()->authenticate();
         } catch (\Exception $e) {
-            return response()->json(['status' => 'Authorization Token not found'], 401);
+            if ($e instanceof \Tymon\JWTAuth\Exceptions\TokenInvalidException) {
+                return response()->json(['status' => 'Token is Invalid'], 401);
+            } else if ($e instanceof \Tymon\JWTAuth\Exceptions\TokenExpiredException) {
+                return response()->json(['status' => 'Token is Expired'], 401);
+            } else {
+                return response()->json(['status' => 'Authorization Token not found'], 401);
+            }
         }
 
         return $next($request);

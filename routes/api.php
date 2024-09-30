@@ -26,7 +26,7 @@ Route::group(['middleware' => ['jwt','throttle:10000,1']], function () {
 });
 
 
-Route::group(['middleware' =>  ['jwt','throttle:10000,1']], function () {
+Route::group(['middleware' =>  ['jwt:api']], function () {
     //Service History
     Route::group(['prefix' => 'service-history'],function () {
         Route::get('list', [\App\Http\Controllers\ServiceHistory\ServiceHistoryController::class, 'getServiceHistory']);

@@ -16,7 +16,7 @@ trait CommonTrait
 {
 
     public function CustomerInfo($request){
-        $token = $request->bearerToken();
+//        $token = $request->bearerToken();
         $payload = JWTAuth::setToken($token)->getPayload();
         return $payload;
     }
