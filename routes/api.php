@@ -31,6 +31,7 @@ Route::group(['middleware' =>  ['jwt:api']], function () {
     Route::group(['prefix' => 'service-history'],function () {
         Route::get('list', [\App\Http\Controllers\ServiceHistory\ServiceHistoryController::class, 'getServiceHistory']);
         Route::get('schedule', [\App\Http\Controllers\ServiceHistory\ServiceHistoryController::class, 'getServiceSchedule']);
+        Route::post('customer-feedback', [\App\Http\Controllers\ServiceHistory\ServiceHistoryController::class, 'customerFeedbackAdd']);
     });
 
     //Warranty
@@ -41,6 +42,7 @@ Route::group(['middleware' =>  ['jwt:api']], function () {
     //Online Booking
     Route::group(['prefix' => 'online-booking'],function () {
         Route::get('supporting-data', [\App\Http\Controllers\OnlineBooking\OnlineBookingController::class, 'getSupportingData']);
+        Route::get('history', [\App\Http\Controllers\OnlineBooking\OnlineBookingController::class, 'getBookingHistory']);
         Route::post('location-wise-time-slot', [\App\Http\Controllers\OnlineBooking\OnlineBookingController::class, 'getBayinfoByLocation']);
         Route::post('add', [\App\Http\Controllers\OnlineBooking\OnlineBookingController::class, 'onlineBooking']);
     });

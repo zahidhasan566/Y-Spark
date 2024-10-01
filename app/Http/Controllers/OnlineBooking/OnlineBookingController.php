@@ -5,6 +5,7 @@ namespace App\Http\Controllers\OnlineBooking;
 use App\Http\Controllers\Controller;
 use App\Traits\CommonTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class OnlineBookingController extends Controller
@@ -26,6 +27,17 @@ class OnlineBookingController extends Controller
         return response()->json([
             'status' => 'success',
             'locations' => $locations,
+        ]);
+    }
+
+    public function getBookingHistory(){
+        $onlineBookingHistory = DB::connection('dbYamahaServiceCenter')->table('tblOnlineBooking')->select('tblOnlineBooking.*')
+            ->where('tblOnlineBooking.ChassisNo', Auth::user()->ChassisNo)
+            ->get();
+
+        return response()->json([
+            'status' => 'success',
+            'onlineBookingHistory' => $onlineBookingHistory,
         ]);
     }
 
