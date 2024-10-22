@@ -189,7 +189,6 @@ class OnlineBookingController extends Controller
                     'message' => 'Reservation Failed Due to Time Slot And Bay Schedule',
                 ], 200);
             }
-            dd($onlineBooking);
             $OnlineBookingId = $onlineBooking[0]->InsertID;
 
             $reservationNo = $OnlineBookingId;
