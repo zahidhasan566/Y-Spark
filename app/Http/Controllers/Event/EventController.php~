@@ -23,12 +23,11 @@ class EventController extends Controller
             array_push($allEvents,$finalEvents);
         }
 
-        $notice = YSparkEvents::where('Type', 'Notice')->orderBy('EventID', 'desc')->first();
+        $notices = YSparkEvents::where('Type', '')->get();
 
         return response()->json([
             'status' => 'success',
             'allEvents' => $allEvents,
-            'notice' => $notice,
         ]);
     }
 }
