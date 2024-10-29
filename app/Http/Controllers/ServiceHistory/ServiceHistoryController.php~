@@ -23,7 +23,6 @@ class ServiceHistoryController extends Controller
         $PurchaseDate = DB::select(DB::raw("select [DealarInvoiceMaster].[InvoiceDate] from [DealarInvoiceDetails]
         inner join [DealarInvoiceMaster] on [DealarInvoiceMaster].[InvoiceID] = [DealarInvoiceDetails].[InvoiceID] where [ChassisNo] = '$chassisNo'"));
         $PurchaseDate= $PurchaseDate[0]->InvoiceDate;
-
 //        $ytdFileCount = array_reduce($serviceHistory, function ($carry, $item) {
 //            return $carry + (int)$item->YTD_File;
 //        }, 0);
