@@ -43,9 +43,10 @@ class AuthController extends Controller
                                 DealarInvoiceDetails.ChassisNo = ?
                         ", [$chassisNo]);
 
-        if ($user[0]) {
-            $customerCode = $user[0]->CustomerCode;
-            $mobileNo = $user[0]->MobileNo;
+        dd($user[0]->CustomerCode);
+        if ($user) {
+            $customerCode = $user->CustomerCode;
+            $mobileNo = $user->MobileNo;
 
             $SixDigitRandomNumber = rand(100000, 999999);
             $ySparkLoginUser = new YSparkLogin();
