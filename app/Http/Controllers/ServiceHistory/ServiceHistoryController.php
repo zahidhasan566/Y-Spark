@@ -5,6 +5,7 @@ namespace App\Http\Controllers\ServiceHistory;
 use App\Http\Controllers\Controller;
 use App\Models\DealarInvoiceDetails;
 use App\Models\JobCard\FreeServiceSchedule;
+use App\Models\Jobcard\ViewtblJobCard;
 use App\Traits\CommonTrait;
 use Illuminate\Http\Request;
 use App\Models\JobCard\TblJobCard;
@@ -51,10 +52,21 @@ class ServiceHistoryController extends Controller
 
     public function customerFeedbackAdd(Request $request)
     {
-        TblJobCard::where('JobCardNo', $request->jobCardNo)->update([
-                    'CustomerFeedback' => $request->feedbackRating
-        ]);
         try {
+            // Check if JobCardNo exists in either ViewtblJobCard or TblJobCard
+            $existsInView = ViewtblJobCard::where('JobCardNo', $request->jobCardNo)->exists();
+            $existsInTbl = TblJobCard::where('JobCardNo', $request->jobCardNo)->exists();
+
+            if($existsInView){
+                ViewtblJobCard::where('JobCardNo', $request->jobCardNo)->update([
+                    'CustomerFeedback' => $request->feedbackRating
+                ]);
+            }
+            else{
+                TblJobCard::where('JobCardNo', $request->jobCardNo)->update([
+                    'CustomerFeedback' => $request->feedbackRating
+                ]);
+            }
             return response()->json([
                 'status' => 'Success',
                 'message' => 'Job Card rating updated successfully',
