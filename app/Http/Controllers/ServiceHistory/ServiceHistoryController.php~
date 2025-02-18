@@ -57,20 +57,16 @@ class ServiceHistoryController extends Controller
             $existsInView = ViewtblJobCard::where('JobCardNo', $request->jobCardNo)->exists();
             $existsInTbl = TblJobCard::where('JobCardNo', $request->jobCardNo)->exists();
 
-            TblJobCard::where('JobCardNo', $request->jobCardNo)->update([
-                'CustomerFeedback' => $request->feedbackRating
-            ]);
-
-//            if($existsInView){
-//                ViewtblJobCard::where('JobCardNo', $request->jobCardNo)->update([
-//                    'CustomerFeedback' => $request->feedbackRating
-//                ]);
-//            }
-//            else{
-//                TblJobCard::where('JobCardNo', $request->jobCardNo)->update([
-//                    'CustomerFeedback' => $request->feedbackRating
-//                ]);
-//            }
+            if($existsInView){
+                ViewtblJobCard::where('JobCardNo', $request->jobCardNo)->update([
+                    'CustomerFeedback' => $request->feedbackRating
+                ]);
+            }
+            else{
+                TblJobCard::where('JobCardNo', $request->jobCardNo)->update([
+                    'CustomerFeedback' => $request->feedbackRating
+                ]);
+            }
             return response()->json([
                 'status' => 'Success',
                 'message' => 'Job Card rating updated successfully',

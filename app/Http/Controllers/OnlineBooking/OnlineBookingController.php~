@@ -113,10 +113,6 @@ class OnlineBookingController extends Controller
         $preferredDate = $request->preferredDate;
         $preferredLocation = $request->preferredLocation;
         $bayName = str_replace(' ', '', $request->bayName);
-
-
-        dd($bayName);
-
         $timeSlotId = $request->timeSlotId;
         $serviceType = $request->serviceType;
         $serviceTypeName = $request->serviceTypeName;

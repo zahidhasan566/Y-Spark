@@ -170,7 +170,7 @@ class OnlineBookingController extends Controller
             if ($totalReserved > $noOfBay) {
                 return response()->json([
                     'status' => 'error',
-                    'locations' => 'Reservation not available for selected slot. Please try another slot.'
+                    'message' => 'Reservation not available for selected slot. Please try another slot.'
                 ]);
             };
 
