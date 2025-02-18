@@ -133,7 +133,7 @@ class OnlineBookingController extends Controller
                 if ($request->PreferredDate <= $lastBookingDate) {
                     return response()->json([
                         'status' => 'error',
-                        'locations' => 'Reservation already  made for chassis-' . $chassisNo . ' at ' . date("Y-m-d", strtotime($lastBooking[0]->ServiceDate)) . '. You can book again to this Service center after 15 days'
+                        'message' => 'Reservation already  made for chassis-' . $chassisNo . ' at ' . date("Y-m-d", strtotime($lastBooking[0]->ServiceDate)) . '. You can book again to this Service center after 15 days'
                     ]);
                 }
             }
@@ -147,7 +147,7 @@ class OnlineBookingController extends Controller
             if ($holiday[0]->doCount > 0) {
                 return response()->json([
                     'status' => 'error',
-                    'locations' => 'Reservation not available in Holiday. Please try another day.'
+                    'message' => 'Reservation not available in Holiday. Please try another day.'
                 ]);
             }
 
@@ -155,7 +155,7 @@ class OnlineBookingController extends Controller
             if ($friday == 'Fri') {
                 return response()->json([
                     'status' => 'error',
-                    'locations' => 'Reservation not available in Friday. Please try other.'
+                    'message' => 'Reservation not available in Friday. Please try other.'
                 ]);
 
             }
