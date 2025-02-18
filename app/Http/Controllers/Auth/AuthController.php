@@ -43,7 +43,7 @@ class AuthController extends Controller
                                 DealarInvoiceDetails.ChassisNo = ?
                         ", [$chassisNo]);
 
-        if ($user[0]) {
+        if ( !empty($user[0])) {
             $customerCode = $user[0]->CustomerCode;
             $mobileNo = $user[0]->MobileNo;
 
