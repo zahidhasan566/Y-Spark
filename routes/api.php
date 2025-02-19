@@ -68,6 +68,9 @@ Route::group(['middleware' =>  ['jwt:api']], function () {
 //        Route::post('password-change',[\App\Http\Controllers\Common\HelperController::class,'passwordChange']);
 //    });
 
-
 });
 
+//delwar
+Route::get('bike_models', [\App\Http\Controllers\Common\CommonSupportingController::class, 'getBikeModels']);
+Route::get('yamalube', [\App\Http\Controllers\Common\CommonSupportingController::class, 'getYamalube']);
+Route::get('accessories_helmet', [\App\Http\Controllers\Common\CommonSupportingController::class, 'getAccessoriesHelmet']);

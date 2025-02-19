@@ -112,6 +112,19 @@ return [
             'prefix' => '',
             'strict' => false,
         ],
+        'sqlsrv62' => [
+            'driver' => 'sqlsrv',
+            'host' => '192.168.100.62',
+            'port' => '1433',
+            'database' => 'YamahaCustomerArsenal',
+            'username' => 'sa',
+            'password' => 'dataport',
+            'charset' => 'utf8',
+            'prefix' => '',
+            'strict' => false,
+            // 'engine' => null,
+        ],
+
 
     ],
 
