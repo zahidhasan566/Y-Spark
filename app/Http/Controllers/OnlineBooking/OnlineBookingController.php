@@ -130,7 +130,9 @@ class OnlineBookingController extends Controller
                 $lastBookingDate = date_add($lastBookingDate, date_interval_create_from_date_string("14 days"));
                 $lastBookingDate = date_format($lastBookingDate, "Y-m-d");
 
-                if ($request->PreferredDate <= $lastBookingDate) {
+
+
+                if ($preferredDate <= $lastBookingDate) {
                     return response()->json([
                         'status' => 'error',
                         'message' => 'Reservation already  made for chassis-' . $chassisNo . ' at ' . date("Y-m-d", strtotime($lastBooking[0]->ServiceDate)) . '. You can book again to this Service center after 15 days'
