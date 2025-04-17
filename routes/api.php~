@@ -51,7 +51,7 @@ Route::group(['middleware' =>  ['jwt:api']], function () {
     Route::group(['prefix' => 'common-supporting'],function () {
         Route::get('list', [\App\Http\Controllers\Common\CommonSupportingController::class, 'getSupportingData']);;
         Route::get('spare-parts-category/list', [\App\Http\Controllers\Common\CommonSupportingController::class, 'getSparePartsCategoryData']);
-        Route::post('spare-part-list-by-category', [\App\Http\Controllers\Common\CommonSupportingController::class, 'getSparePartsData']);
+        Route::post('spare-part-list-by-category', [\App\Http\Controllers\Common\CommonSupportingController::class, 'getSparePartsCategoryData']);
     });
     Route::group(['prefix' => 'events'],function () {
         Route::get('list', [\App\Http\Controllers\Event\EventController::class, 'getSupportingData']);;
