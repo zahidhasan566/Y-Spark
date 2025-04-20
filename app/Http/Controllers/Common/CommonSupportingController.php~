@@ -32,8 +32,6 @@ class CommonSupportingController extends Controller
             'data' => $data,
         ]);
     }
-
-    //Get Spare Parts Data
     public function getSparePartsData(Request $request){
         $validator = Validator::make($request->all(), [
             'CategoryID' => 'required',
