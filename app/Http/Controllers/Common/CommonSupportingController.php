@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Validator;
 class CommonSupportingController extends Controller
 {
     public function getSupportingData(Request $request){
-//        $partsMrpUrl = "https://acimotors-bd.com/products/automobiles/yamaha/accessories";
         $socialLink=[];
         $socialLink['facebook'] = "https://www.facebook.com/Yamahabd";
         $socialLink['instagram'] = "https://www.instagram.com/yamaha.bangladesh";

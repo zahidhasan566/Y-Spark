@@ -42,7 +42,7 @@ class CommonSupportingController extends Controller
         }
         $search = $request->Seearch;
         $product  = AppProduct::select('AppProductCategory.CategoryID','AppProductCategory.CategoryName',
-            'Product.ProductCode','Product.ProductName','Product.MRP','AppProduct.Image')
+            'Product.ProductCode','Product.ProductName','Product.MRP','AppProduct.Image','AppProduct.Type')
             ->join('AppProductCategory','AppProductCategory.CategoryID','=','AppProduct.CategoryID')
             ->join('Product','Product.ProductCode','=','AppProduct.ProductCode')
             ->where('AppProduct.CategoryID', $request->CategoryID)
