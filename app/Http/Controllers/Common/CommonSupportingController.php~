@@ -40,13 +40,16 @@ class CommonSupportingController extends Controller
         if ($validator->fails()) {
             return response()->json(['message' => $validator->errors()], 400);
         }
+        $search = $request->Seearch;
         $product  = AppProduct::select('AppProductCategory.CategoryID','AppProductCategory.CategoryName',
             'Product.ProductCode','Product.ProductName','Product.MRP','AppProduct.Image')
             ->join('AppProductCategory','AppProductCategory.CategoryID','=','AppProduct.CategoryID')
             ->join('Product','Product.ProductCode','=','AppProduct.ProductCode')
             ->where('AppProduct.CategoryID', $request->CategoryID)
-            ->orWhere('Product.ProductName', $request->Seearch)
-            ->orWhere('Product.ProductCode', $request->Seearch)
+            ->where(function ($q) use ($search) {
+                $q->where('Product.ProductName', 'like', '%' . $search . '%');
+                $q->orWhere('Product.ProductCode', 'like', '%' . $search . '%');
+            })
             ->get();
 
         return response()->json([
