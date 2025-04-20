@@ -41,7 +41,7 @@ class CommonSupportingController extends Controller
         if ($validator->fails()) {
             return response()->json(['message' => $validator->errors()], 400);
         }
-        $search = $request->Seearch;
+        $search = $request->Search;
         $product  = AppProduct::select('AppProductCategory.CategoryID','AppProductCategory.CategoryName',
             'Product.ProductCode','Product.ProductName','Product.MRP','AppProduct.Image','AppProduct.Type')
             ->join('AppProductCategory','AppProductCategory.CategoryID','=','AppProduct.CategoryID')
