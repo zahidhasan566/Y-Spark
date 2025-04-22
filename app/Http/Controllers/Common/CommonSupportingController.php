@@ -7,6 +7,7 @@ use App\Models\AppProduct;
 use App\Models\AppProductCategory;
 use App\Models\YSparkEvents;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class CommonSupportingController extends Controller
@@ -43,7 +44,10 @@ class CommonSupportingController extends Controller
         }
         $search = $request->Search;
         $product  = AppProduct::select('AppProductCategory.CategoryID','AppProductCategory.CategoryName',
-            'Product.ProductCode','Product.ProductName','Product.MRP','AppProduct.Image','AppProduct.Type')
+            'Product.ProductCode','Product.ProductName',
+            DB::raw("CONVERT(INT,Product.MRP) MRP"),
+            'AppProduct.Image',
+            'AppProduct.Type')
             ->join('AppProductCategory','AppProductCategory.CategoryID','=','AppProduct.CategoryID')
             ->join('Product','Product.ProductCode','=','AppProduct.ProductCode')
             ->where('AppProduct.CategoryID', $request->CategoryID)
