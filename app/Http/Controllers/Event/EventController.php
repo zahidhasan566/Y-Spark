@@ -17,7 +17,7 @@ class EventController extends Controller
             $finalEvents['EventID']=$event->EventID;
             $finalEvents['EventName']=$event->EventName;
 //            $finalEvents['EventImage']= asset('assets/images/events/'.$event->EventImage);
-            $finalEvents['EventImage']='https://ydms.yamahabd.com/assets/images/PartsImage/'.$event->EventImage;
+            $finalEvents['EventImage']='https://ydms.yamahabd.com/uploads/YSparkEvents/'.$event->EventImage;
             $finalEvents['EventStartFrom']=$event->EventStartFrom;
             $finalEvents['EventEndTo']=$event->EventEndTo;
             $finalEvents['EventDetails']=$event->EventDetails;
