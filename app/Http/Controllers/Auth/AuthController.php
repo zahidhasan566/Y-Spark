@@ -70,7 +70,7 @@ class AuthController extends Controller
             $smsLog->UpdatedAt = Carbon::now()->format('Y-m-d H:i:s');
             $smsLog->save();
 
-            if ($responseStatus == 'success') {
+            if (json_decode($respons)->success === true) {
                 return response()->json([
                     'status' => 'Success',
                     'message' => 'Code Sent Successfully!'
