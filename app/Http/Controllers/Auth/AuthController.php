@@ -57,7 +57,7 @@ class AuthController extends Controller
             $ySparkLoginUser->save();
 
             $smscontent = 'ওয়াই স্পার্ক লগিনের জন্য আপনার ওটিপি কোডটি হলো- ' . $SixDigitRandomNumber;
-            $respons = $this->sendSmsQ($mobileNo, 'ACIMOTORSMASK', 'Y_Spark', 'Y_Spark', '', $customerCode, 'sslcom', $smscontent);;
+            $respons = $this->sendSmsQ($mobileNo, 'YSPARKOTP', 'Y_Spark', 'Y_Spark', '', $customerCode, 'sslcom', $smscontent);;
             $responseStatus = json_decode($respons)->data->status;
 
             //Data Insert Sms Log
