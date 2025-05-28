@@ -28,20 +28,22 @@ class AuthController extends Controller
 //            ->join('DealarInvoiceMaster', 'DealarInvoiceMaster.InvoiceID', 'DealarInvoiceDetails.InvoiceID')
 //            ->Where('Chassisno', $chassisNo)
 //            ->first();
-        $user = DB::select("
-                            SELECT TOP 1
-                                DealarInvoiceDetails.ChassisNo,
-                                DealarInvoiceMaster.MobileNo,
-                                DealarInvoiceMaster.CustomerCode
-                            FROM
-                                DealarInvoiceDetails WITH(NOLOCK)
-                            INNER JOIN
-                                DealarInvoiceMaster WITH(NOLOCK)
-                            ON
-                                DealarInvoiceMaster.InvoiceID = DealarInvoiceDetails.InvoiceID
-                            WHERE
-                                DealarInvoiceDetails.ChassisNo = ?
-                        ", [$chassisNo]);
+//        $user = DB::select("
+//                            SELECT TOP 1
+//                                DealarInvoiceDetails.ChassisNo,
+//                                DealarInvoiceMaster.MobileNo,
+//                                DealarInvoiceMaster.CustomerCode
+//                            FROM
+//                                DealarInvoiceDetails WITH(NOLOCK)
+//                            INNER JOIN
+//                                DealarInvoiceMaster WITH(NOLOCK)
+//                            ON
+//                                DealarInvoiceMaster.InvoiceID = DealarInvoiceDetails.InvoiceID
+//                            WHERE
+//                                DealarInvoiceDetails.ChassisNo = ?
+//                        ", [$chassisNo]);
+
+        $user = DB::select("exec usp_CheckChassisDetails '$chassisNo'");
 
         if ( !empty($user) && $user[0]) {
             $customerCode = $user[0]->CustomerCode;
@@ -95,6 +97,7 @@ class AuthController extends Controller
     {
         $otpCode = $request->otpCode;
         $chassisNo = $request->chassisNo;
+        $currentDateTime = Carbon::now();
         $user = YSparkLogin::select(
             'ViewRetailCustomer.CustomerName',
             'ViewRetailCustomer.ChassisNo',
@@ -112,6 +115,7 @@ class AuthController extends Controller
             ->where('ViewRetailCustomer.ChassisNo', $chassisNo)
             ->where('YSparkLogin.LoginCode', $otpCode)
             ->where('YSparkLogin.LoginCode', $otpCode)
+            ->where('YSparkLogin.OtpExpiration', '>=', $currentDateTime) // Check if OTP is still valid
             ->first();
         try {
             if ($user) {
