@@ -5,6 +5,7 @@ namespace App\Http\Controllers\OnlineBooking;
 use App\Http\Controllers\Controller;
 use App\Traits\CommonTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -120,6 +121,15 @@ class OnlineBookingController extends Controller
 
 
         try {
+            $today = Carbon::today();
+
+            if (Carbon::parse($preferredDate)->equalTo($today)) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Reservation not available for today. Please book at least one day in advance.'
+                ]);
+            }
+
             $lastBooking = DB::connection('MotorMC')->select(DB::raw("SELECT TOP 1 * FROM [192.168.100.201].dbYamahaServiceCenter.dbo.tblOnlineBooking
                      WHERE ServiceCenterCode='$preferredLocation'
                          AND ChassisNo='$chassisNo'
