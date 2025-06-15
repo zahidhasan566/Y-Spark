@@ -75,7 +75,8 @@ class AuthController extends Controller
             if (json_decode($respons)->success === true) {
                 return response()->json([
                     'status' => 'Success',
-                    'message' => 'Code Sent Successfully!'
+                    'message' => 'Code Sent Successfully!',
+                    'mobile' => $ySparkLoginUser->MobileNo
                 ], 200);
             } else {
                 return response()->json([
