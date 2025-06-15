@@ -48,6 +48,7 @@ class AuthController extends Controller
         if ( !empty($user) && $user[0]) {
             $customerCode = $user[0]->CustomerCode;
             $mobileNo = $user[0]->MobileNo;
+            $customerName = $user[0]->CustomerName;
 
             $SixDigitRandomNumber = rand(100000, 999999);
             $ySparkLoginUser = new YSparkLogin();
@@ -76,7 +77,8 @@ class AuthController extends Controller
                 return response()->json([
                     'status' => 'Success',
                     'message' => 'Code Sent Successfully!',
-                    'mobile' => $ySparkLoginUser->MobileNo
+                    'mobile' => $ySparkLoginUser->MobileNo,
+                    'customerName' => $customerName,
                 ], 200);
             } else {
                 return response()->json([
