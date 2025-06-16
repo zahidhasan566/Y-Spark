@@ -139,7 +139,7 @@ class AuthController extends Controller
                 return response()->json([
                     'status' => 'error',
                     'message' => 'Invalid Otp Code!'
-                ], 401);
+                ], 200);
             }
 
         } catch (\Exception $exception) {
@@ -154,9 +154,11 @@ class AuthController extends Controller
     {
 //        dd($user);
         return response()->json([
+            'status' => 'success',
+            'message' =>'Login Successfully',
             'access_token' => $token,
             'Data' => $userDetails,
-        ]);
+        ],200);
     }
 
     public function logout()
