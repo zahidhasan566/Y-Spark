@@ -178,8 +178,8 @@ class OnlineBookingController extends Controller
                             AND TimeSlotId='$timeSlotId'
                             AND ServiceCenterCode = '$preferredLocation'"));
 
-            $totalReserved = $totalReserved[0]->Reserved + 1;
-            if ($totalReserved > $noOfBay) {
+            //$totalReserved = $totalReserved[0]->Reserved + 1;
+            if (!empty($totalReserved[0]->Reserved) && intval($totalReserved[0]->Reserved) > 0) {
                 return response()->json([
                     'status' => 'error',
                     'message' => 'Reservation not available for selected slot. Please try another slot.'
@@ -239,7 +239,7 @@ class OnlineBookingController extends Controller
 
             return response()->json([
                 'status' => 'success',
-                'message' => 'Successfully reserved your online booking.  Your online booking id : ' . $reservationNo,
+                'message' => 'Successfully reserved your online booking.  Your online booking reservation no : ' . $reservationNo,
             ], 200);
         } catch
         (\Exception $exception) {
