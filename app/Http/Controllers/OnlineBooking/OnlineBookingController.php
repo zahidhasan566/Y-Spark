@@ -175,7 +175,7 @@ class OnlineBookingController extends Controller
             $noOfBay = DB::connection('MotorMC')->select(DB::raw("SELECT *  FROM [MotorMC].[dbo].[OnlineReservation]   WHERE CustomerCode = '$preferredLocation'"));
             $totalReserved = DB::connection('MotorMC')->select(DB::raw("SELECT count(*) AS Reserved FROM [192.168.100.201].dbYamahaServiceCenter.dbo.tblOnlineBooking
                             WHERE ServiceDate='$preferredDate'
-                            AND TimeSlotId='$timeSlotId'
+                            AND TimeSlotId='$timeSlotId' And BayName like'%$bayName%'
                             AND ServiceCenterCode = '$preferredLocation'"));
 
             //$totalReserved = $totalReserved[0]->Reserved + 1;
