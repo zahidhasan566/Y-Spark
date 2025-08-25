@@ -186,13 +186,14 @@ class OnlineBookingController extends Controller
                 ]);
             };
 
+            $source= 'App';
             if ($onlineBooking = DB::connection('MotorMC')
                 ->select(
                     DB::raw("exec [192.168.100.201].dbYamahaServiceCenter.dbo.usp_doInsertOnlineBookingUpdate
                 '$preferredDate','$timeSlotId','$bayName','$serviceType',
                 '$serviceTypeName','$customerName','$mobileNo','$chassisNo',
                 '$brandName','$entryIp','$kilometerDone','$preferredLocation',
-                '$problemDetails'"))) {
+                '$problemDetails','$source'"))) {
             }
 
             if(empty($onlineBooking[0]->InsertID)){
